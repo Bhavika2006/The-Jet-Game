@@ -2,7 +2,7 @@
 
 
 function setup() {
-  createCanvas(400,400);
+  createCanvas(800,800);
   
 }
 
@@ -21,10 +21,10 @@ function particles(){
       particle.x = -5
     particle.velocityX = 2
     }else{
-      particle.x = 405
+      particle.x = 805
       particle.velocityX = -2
     }
-    particle.y = random(5,300)
+    particle.y = random(5,700)
 
   }
 
