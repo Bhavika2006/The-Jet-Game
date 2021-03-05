@@ -13,7 +13,7 @@ function draw() {
 }
 
 function particles(){
-  if(frameCount%20 ===0){
+  if(frameCount%5 ===0){
     var particle = createSprite(0,0,5,5)
     particle.shapeColor="white"
     var position = Math.round(random(1,2))
