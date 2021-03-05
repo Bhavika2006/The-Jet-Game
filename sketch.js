@@ -1,48 +1,31 @@
 
-const Engine = Matter.Engine;
-const World = Matter.World;
-const Bodies = Matter.Bodies;
-const Body = Matter.Body;
-var jetImg,skyImg,trackImg;
-var zoom = 1
-function preload()
-{
-jetImg = loadImage("images/jet.png")	
-trackImg = loadImage("images/tk.jpeg")	
-skyImg = loadImage("images/sky.jpeg")	
-}
+
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-
-
-	engine = Engine.create();
-	world = engine.world;
-
-	//Create the Bodies Here.
-	track = createSprite(30,windowHeight/4+100,windowWidth,windowHeight)
-	track.addImage(trackImg);
-	track.scale = 1.5
-	
-	Engine.run(engine);
+  createCanvas(400,400);
   
 }
 
-
 function draw() {
-  rectMode(CENTER);
-  background(0);
-
-  translate(windowWidth/2,windowHeight/4)
-  scale(zoom)
-  zoom += 0.05
- 
-  if(zoom>2){
-	  zoom = 1	
-  }
+  background("black");  
   drawSprites();
- 
+  particles();
 }
 
+function particles(){
+  if(frameCount%20 ===0){
+    var particle = createSprite(0,0,5,5)
+    particle.shapeColor="white"
+    var position = Math.round(random(1,2))
+    if(position ===1){
+      particle.x = -5
+    particle.velocityX = 2
+    }else{
+      particle.x = 405
+      particle.velocityX = -2
+    }
+    particle.y = random(5,300)
 
+  }
 
+}
