@@ -1,15 +1,19 @@
-
-
-
+var database
+var playerImg
+function preload(){
+playerImg = loadImage("jet.png")
+}
 function setup() {
-  createCanvas(800,800);
-  
+  createCanvas(400,400);
+  database = firebase.database()
 }
 
 function draw() {
   background("black");  
   drawSprites();
-  particles();
+  game = new Game()
+  game.getState()
+  
 }
 
 function particles(){
@@ -21,10 +25,10 @@ function particles(){
       particle.x = -5
     particle.velocityX = 2
     }else{
-      particle.x = 805
+      particle.x = 405
       particle.velocityX = -2
     }
-    particle.y = random(5,700)
+    particle.y = random(5,300)
 
   }
 
