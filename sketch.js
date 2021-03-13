@@ -1,5 +1,6 @@
 var database
 var playerImg
+var gameState = 0
 function preload(){
 playerImg = loadImage("jet.png")
 }
