@@ -6,7 +6,19 @@ class Game{
            form = new Form()
            form.display()
            player = new Player()
+           player.getCount();
+           var index = 0
+          
        }
+
+            player1 = createSprite(100,350)
+            player1.addImage(playerImg)
+            player1.scale = 0.05
+            player2 = createSprite(300,350)
+            player2.addImage(playerImg)
+            player2.scale = 0.05
+            players=[player1,player2];
+
    }
 
 
@@ -42,10 +54,52 @@ class Game{
                   playerScore+=1
                 
               }
+            
+            
+          }
 
-              if(player.isTouching(particles)){
+
+          play(){
+              form.hide()
+              if(players[index].isTouching(particleGroup)){
+                player[index+1].distance = 0;
+               }
+              
+            Player.getPlayerInfo();
+         
+            if(allPlayers!==undefined){
+               
+                var index = 0;
+                var pos = 50;
+                for(var plr in allPlayers){
+                    
+                    text("Score: " + allPlayers[plr].score, pos,50) 
+                    players[index+1].y = 350 - allPlayers[plr].distance;
+                }
+            }
+            if(keyIsDown(UP_ARROW) && player.index!==null){
                 
-              }
+                player.distance+=10
+                
+                player.update();
+            }
+            if(keyIsDown(DOWN_ARROW) && player.index!==null){
+                
+                player.distance-=10
+                
+                player.update();
+            }
+        
+            if(player.distance>350){
+                player.distance = 0;
+                player.score+=1;
+            }
+          drawSprites(); 
           }
         
         }
+
+
+
+
+       
