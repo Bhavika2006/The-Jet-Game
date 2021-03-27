@@ -57,9 +57,10 @@ class Game{
                 var pos = 50;
 
                 for(var plr in allPlayers){
-                    
+                    fill("white")
+                   
                     text("Score: " + allPlayers[plr].score, pos,50)
-
+                    
                     if(particlesGroup.isTouching(players[index])){
                         player.distance = 0;
                         player.update()
@@ -78,7 +79,7 @@ class Game{
                 player.update();
             }
         
-            if(player.distance>350){
+            if(player.distance>660){
                 player.distance = 0;
                 player.score+=1;
                 player.update();
