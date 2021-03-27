@@ -7,18 +7,15 @@ class Game{
            form.display()
            player = new Player()
            player.getCount();
-           var index = 0
-          
        }
 
-            player1 = createSprite(100,350)
+            player1 = createSprite(width/4,height-50)
             player1.addImage(playerImg)
-            player1.scale = 0.05
-            player2 = createSprite(300,350)
+            player1.scale = 0.1
+            player2 = createSprite(3*width/4,height-50)
             player2.addImage(playerImg)
-            player2.scale = 0.05
+            player2.scale = 0.1
             players=[player1,player2];
-
    }
 
 
@@ -48,33 +45,30 @@ class Game{
              playerScore:score
             });
           }
-        
-          reset(){
-              if(player.y<0 && playerScore<5){
-                  playerScore+=1
-                
-              }
-            
-            
-          }
-
 
           play(){
               form.hide()
-              if(players[index].isTouching(particleGroup)){
-                player[index+1].distance = 0;
-               }
-              
             Player.getPlayerInfo();
          
             if(allPlayers!==undefined){
-               
+                background("black");
+                //var pos = 350
                 var index = 0;
                 var pos = 50;
+
                 for(var plr in allPlayers){
                     
-                    text("Score: " + allPlayers[plr].score, pos,50) 
-                    players[index+1].y = 350 - allPlayers[plr].distance;
+                    text("Score: " + allPlayers[plr].score, pos,50)
+
+                    if(particlesGroup.isTouching(players[index])){
+                        player.distance = 0;
+                        player.update()
+                    }
+
+                    players[index].y = height-50 - allPlayers[plr].distance;
+
+                    index = index+1
+                    pos = width-100
                 }
             }
             if(keyIsDown(UP_ARROW) && player.index!==null){
@@ -83,23 +77,15 @@ class Game{
                 
                 player.update();
             }
-            if(keyIsDown(DOWN_ARROW) && player.index!==null){
-                
-                player.distance-=10
-                
-                player.update();
-            }
         
             if(player.distance>350){
                 player.distance = 0;
                 player.score+=1;
+                player.update();
             }
+
+            
           drawSprites(); 
           }
         
         }
-
-
-
-
-       
